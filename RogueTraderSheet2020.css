@@ -161,7 +161,6 @@ color: white;
 border: none;
 }
 
-
 /* Main Styles */
 .charsheet {
 background-image: url(http://i.imgur.com/PWr9jAR.png);
@@ -344,6 +343,28 @@ width: calc(100% - 3px) !important;
 margin-right: 0 !important;
 }
 
+.charsheet .sheet-wrapper .sheet-flex {
+width:100%;
+display:flex;
+flex-flow:row nowrap;
+justify-content:space-between;
+}
+
+.charsheet .sheet-wrapper .sheet-flex table {
+border:none;
+border-collapse:collapse;
+width:11%;
+flex-basis:11%;
+}
+
+.charsheet .sheet-wrapper .sheet-flex table tr {
+border:none;
+border-collapse:collapse;
+width:11%;
+flex-basis:11%;
+}
+
+
 /* Special Styles */
 .charsheet .sheet-wrapper .sheet-skills td:first-child {
 width:70%;
@@ -438,6 +459,22 @@ white-space: pre;
 display: inline-block;
 margin-left: -3px;
 margin-right: -3.5px;
+}
+.charsheet .sheet-wrapper .sheet-item5 { /*used on Characteristic Advancement area*/
+display: inline-block;
+width: 100%;
+height: 12px; 
+vertical-align: middle;
+margin: 0 -1px 0 -1px;
+text-align: center;
+padding: 0;
+overflow: hidden;
+font-weight: regular;
+background: none;
+border: none;
+outline: none;
+border-radius: 0;
+box-shadow: 0;
 }
 
 /*=== Ability Bonus container "unnatural" ===*/
