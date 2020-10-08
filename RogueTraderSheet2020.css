@@ -478,7 +478,7 @@ box-shadow: 0;
 }
 
 .charsheet .sheet-wrapper .sheet-dots input[type="radio"] {
-opacity: 0;
+opacity: 1;
 width: 12px;
 height: 12px;
 position: relative;
@@ -486,35 +486,69 @@ top: -5%;
 left: 10%;
 margin: -5%;
 cursor: pointer;
-z-index: 1;
+z-index: 2;
 }
 
 .charsheet .sheet-wrapper .sheet-dots input[type="radio"] + span::before {
-margin-right: 6%;
-margin-left: -6%;
-margin-top: -25%;
+margin-right: 4%;
+margin-left: -4%;
+margin-top: -18%;
 /* border: solid 1px #a8a8a8; */
 text-align: right;
-line-height: 12px;
+line-height: 7px;
 display: inline-block;
 vertical-align: middle;
 /* box-shadow: 0 0 2px #ccc; */
 /* background: #f6f6f6; */
 /* background: radial-gradient(#f6f6f6, #dfdfdf); */
-content: attr(title)  url(https://raw.githubusercontent.com/eloquentlizard/rogue-trader-sheet/master/purityseal-tiny.png);
+content: attr(title) url(https://raw.githubusercontent.com/eloquentlizard/rogue-trader-sheet/master/purityseal-small.png);
 width: 10px;
 height: 10px;
-font-size: 8px;
+font-size: 7px;
 background-color: rgba(0, 0, 0, 0);
+z-index: 1;
 /* border-radius: 50%; */
 }
 
-.charsheet .sheet-wrapper .sheet-dots input[type="radio"]:not(:checked) + span::before, .charsheet .sheet-wrapper .sheet-dots2 input[type="radio"]:not(:checked) + span::before {
+.charsheet .sheet-wrapper .sheet-dots input[type="radio"]:not(:checked) + span::before {
 color: rgba(0, 0, 0, 0);
 }
 
-.charsheet .sheet-wrapper .sheet-dots2 input[type="radio"] {
-opacity: 0;
+.charsheet .sheet-wrapper .sheet-skills .sheet-dots input[type="radio"] {
+opacity: 1;
+width: 12px;
+height: 12px;
+position: relative;
+top: 6%;
+left: 5%;
+margin: -5%;
+cursor: pointer;
+z-index: 2;
+}
+
+.charsheet .sheet-wrapper .sheet-skills .sheet-dots input[type="radio"] + span::before {
+margin-right: 11%;
+margin-left: -6%;
+margin-top: -10%;
+/* border: solid 1px #a8a8a8; */
+line-height: 7px;
+text-align: right;
+display: inline-block;
+vertical-align: middle;
+/* box-shadow: 0 0 2px #ccc; */
+/* background: #f6f6f6; */
+/* background: radial-gradient(#f6f6f6, #dfdfdf); */
+content: attr(title) url(https://raw.githubusercontent.com/eloquentlizard/rogue-trader-sheet/master/purityseal-tiny.png);
+width: 12px;
+height: 12px;
+font-size: 7px;
+background-color: rgba(0, 0, 0, 0);
+z-index: 1;
+/* border-radius: 50%; */
+}
+
+.charsheet .sheet-wrapper .sheet-skills .repeating_skillgroups .sheet-dots input[type="radio"] {
+opacity: 1;
 width: 12px;
 height: 12px;
 position: relative;
@@ -522,12 +556,12 @@ top: 5%;
 left: 5%;
 margin: -5%;
 cursor: pointer;
-z-index: 1;
+z-index: 2;
 }
 
-.charsheet .sheet-wrapper .sheet-dots2 input[type="radio"] + span::before {
-margin-right: 7%;
-margin-left: -6%;
+.charsheet .sheet-wrapper .sheet-skills .repeating_skillgroups .sheet-dots input[type="radio"] + span::before {
+margin-right: 9%;
+margin-left: -8%;
 margin-top: -17%;
 /* border: solid 1px #a8a8a8; */
 line-height: 9px;
@@ -537,15 +571,16 @@ vertical-align: middle;
 /* box-shadow: 0 0 2px #ccc; */
 /* background: #f6f6f6; */
 /* background: radial-gradient(#f6f6f6, #dfdfdf); */
-content: attr(title)  url(https://raw.githubusercontent.com/eloquentlizard/rogue-trader-sheet/master/purityseal-small.png);
+content: attr(title) url(https://raw.githubusercontent.com/eloquentlizard/rogue-trader-sheet/master/purityseal-tiny.png);
 width: 12px;
 height: 12px;
 font-size: 7px;
 background-color: rgba(0, 0, 0, 0);
+z-index: 1;
 /* border-radius: 50%; */
 }
 
-.charsheet .sheet-wrapper .sheet-dots input[type="radio"]:checked ~ input[type="radio"] + span::before, .charsheet .sheet-wrapper .sheet-dots2 input[type="radio"]:checked ~ input[type="radio"] + span::before {
+.charsheet .sheet-wrapper .sheet-dots input[type="radio"]:checked ~ input[type="radio"] + span::before {
 color: rgba(0, 0, 0, 0);
 content: /* url(https://raw.githubusercontent.com/eloquentlizard/rogue-trader-sheet/master/blank10x10.png) */ "";
 }
