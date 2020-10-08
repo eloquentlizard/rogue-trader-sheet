@@ -500,15 +500,13 @@
                 <h3>Basic Skills</h3>
                 <div class="quickborder">
                     <div class="skills">
-                        <table>
+                        <table class="basicskills" style="width:100%;table-layout:fixed;">
                             <tr>
-                                <td></td>
-                                <th style="height: 10px"><label style="text-align: center; font-size: 9.5px">Trained</label></th>
-                                <th style="height: 10px"><label style="text-align: center; font-size: 10px">+10</label></th>
-                                <th style="height: 10px"><label style="text-align: center; font-size: 10px">+20</label></th>
-                                <th style="height: 10px"><label style="text-align: center; font-size: 10px">Talent</label></th>
-                                <th style="height: 10px"><label style="text-align: center; font-size: 10px">Mod</label></th>
-                                <th style="height: 10px"><label style="text-align: center; font-size: 10px">Total</label></th>
+                                <th style="width:54%;"></th>
+                                <th style="height: 10px;width:27%;" colspan="3"><label style="text-align: center; font-size: 10px">Skill Rank</label></th>
+                                <th style="height: 10px;width:9%;"><label style="text-align: center; font-size: 10px">Talent</label></th>
+                                <th style="height: 10px;width:9%;"><label style="text-align: center; font-size: 10px">Mod</label></th>
+                                <th style="height: 10px;width:9%;"><label style="text-align: center; font-size: 10px">Total</label></th>
                             </tr>
                             <tr>
                                 <td>
@@ -518,12 +516,15 @@
                                     </button>
                                     <div class="item" style="width:20%;">Per</div>
                                 </td>
-                                <td><input style="width:36px" name="attr_Awareness1" type="checkbox" value="0.5"></input><span/></td> <!--this skill gives format to the table-->
-                                <td><input style="width:36px" name="attr_Awareness2" type="checkbox" value="10"></input><span/></td>
-                                <td><input style="width:36px" name="attr_Awareness3" type="checkbox" value="10"></input><span/></td>
-                                <td><input style="text-align:center;width:36px" name="attr_TalentBonus1" type="number" value="0"></input></td>
-                                <td><input style="text-align:center;width:36px" name="attr_OtherBonus1" type="number" value="0"></input></td>
-                                <td><input style="text-align:center;width:36px" name="attr_Awareness" type="number" disabled value="(floor((0.5+@{Awareness1})*@{Perception})+@{Awareness2}+@{Awareness3}+@{TalentBonus1}+@{OtherBonus1})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_AwarenessBase" type="radio" value="ceil(@{Perception}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_AwarenessBase" type="radio" value="@{Perception}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_AwarenessBase" type="radio" value="@{Perception}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_AwarenessBase" type="radio" value="@{Perception}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_AwarenessTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_AwarenessOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Awareness" type="number" value="@{AwarenessBase}+@{AwarenessTalentBonus}+@{AwarenessOtherBonus}"></input></td>
                             </tr>
                             <tr> 
                                 <td>
@@ -533,12 +534,15 @@
                                     </button>
                                 <div class="item" style="width:20%">Fel</div>
                                 </td>
-                                <td><input name="attr_Barter1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Barter2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Barter3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus2" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus2" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Barter" type="number" value="(floor((0.5+@{Barter1})*@{Fellowship})+@{Barter2}+@{Barter3}+@{TalentBonus2}+@{OtherBonus2})"></input></td> 
+                                <td class="dots" colspan="3" >
+									<input name="attr_BarterBase" type="radio" value="ceil(@{Fellowship}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_BarterBase" type="radio" value="@{Fellowship}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_BarterBase" type="radio" value="@{Fellowship}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_BarterBase" type="radio" value="@{Fellowship}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_BarterTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_BarterOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Barter" type="number" value="@{BarterBase}+@{BarterTalentBonus}+@{BarterOtherBonus}"></input></td> 
                             </tr>
                             <tr>
                                 <td>
@@ -548,12 +552,15 @@
                                     </button>
                                 <div class="item" style="width:20%">T</div>    
                                 </td>
-                                <td><input name="attr_Carouse1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Carouse2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Carouse3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus3" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus3" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Carouse" type="number" value="(floor((0.5+@{Carouse1})*@{Toughness})+@{Carouse2}+@{Carouse3}+@{TalentBonus3}+@{OtherBonus3})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_CarouseBase" type="radio" value="ceil(@{Toughness}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_CarouseBase" type="radio" value="@{Toughness}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_CarouseBase" type="radio" value="@{Toughness}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_CarouseBase" type="radio" value="@{Toughness}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_CarouseTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_CarouseOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Carouse" type="number" value="@{CarouseBase}+@{CarouseTalentBonus}+@{CarouseOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -563,12 +570,15 @@
                                     </button>
                                 <div class="item" style="width:20%">Fel</div>
                                 </td>
-                                <td><input name="attr_Charm1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Charm2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Charm3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus4" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus4" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Charm" type="number" value="(floor((0.5+@{Charm1})*@{Fellowship})+@{Charm2}+@{Charm3}+@{TalentBonus4}+@{OtherBonus4})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_CharmBase" type="radio" value="ceil(@{Fellowship}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_CharmBase" type="radio" value="@{Fellowship}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_CharmBase" type="radio" value="@{Fellowship}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_CharmBase" type="radio" value="@{Fellowship}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_CharmTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_CharmOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Charm" type="number" value="@{CharmBase}+@{CharmTalentBonus}+@{CharmOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -578,12 +588,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">S</div>
                                 </td>
-                                <td><input name="attr_Climb1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Climb2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Climb3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus5" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus5" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Climb" type="number" value="(floor((0.5+@{Climb1})*@{Strength})+@{Climb2}+@{Climb3}+@{TalentBonus5}+@{OtherBonus5})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_ClimbBase" type="radio" value="ceil(@{Strength}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_ClimbBase" type="radio" value="@{Strength}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_ClimbBase" type="radio" value="@{Strength}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_ClimbBase" type="radio" value="@{Strength}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_ClimbTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_ClimbOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Climb" type="number" value="@{ClimbBase}+@{ClimbTalentBonus}+@{ClimbOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -593,12 +606,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">Fel</div>
                                 </td>
-                                <td><input name="attr_Command1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Command2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Command3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus6" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus6" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Command" type="number" value="(floor((0.5+@{Command1})*@{Fellowship})+@{Command2}+@{Command3}+@{TalentBonus6}+@{OtherBonus6})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_CommandBase" type="radio" value="ceil(@{Fellowship}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_CommandBase" type="radio" value="@{Fellowship}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_CommandBase" type="radio" value="@{Fellowship}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_CommandBase" type="radio" value="@{Fellowship}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_CommandTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_CommandOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Command" type="number" value="@{CommandBase}+@{CommandTalentBonus}+@{CommandOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -608,12 +624,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">Ag</div>
                                 </td>
-                                <td><input name="attr_Concealment1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Concealment2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Concealment3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus7" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus7" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Concealment" type="number" value="(floor((0.5+@{Concealment1})*@{Agility})+@{Concealment2}+@{Concealment3}+@{TalentBonus7}+@{OtherBonus7})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_ConcealmentBase" type="radio" value="ceil(@{Agility}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_ConcealmentBase" type="radio" value="@{Agility}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_ConcealmentBase" type="radio" value="@{Agility}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_ConcealmentBase" type="radio" value="@{Agility}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_ConcealmentTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_ConcealmentOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Concealment" type="number" value="@{ConcealmentBase}+@{ConcealmentTalentBonus}+@{ConcealmentOtherBonus}+[[-10*@{CharSize}]]"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -623,12 +642,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">Ag</div>
                                 </td>
-                                <td><input name="attr_Contortionist1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Contortionist2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Contortionist3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus8" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus8" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Contortionist" type="number" value="(floor((0.5+@{Contortionist1})*@{Agility})+@{Contortionist2}+@{Contortionist3}+@{TalentBonus8}+@{OtherBonus8})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_ContortionistBase" type="radio" value="ceil(@{Agility}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_ContortionistBase" type="radio" value="@{Agility}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_ContortionistBase" type="radio" value="@{Agility}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_ContortionistBase" type="radio" value="@{Agility}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_ContortionistTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_ContortionistOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Contortionist" type="number" value="@{ContortionistBase}+@{ContortionistTalentBonus}+@{ContortionistOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -638,12 +660,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">Fel</div>
                                 </td>
-                                <td><input name="attr_Deceive1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Deceive2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Deceive3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus9" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus9" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Deceive" type="number" value="(floor((0.5+@{Deceive1})*@{Fellowship})+@{Deceive2}+@{Deceive3}+@{TalentBonus9}+@{OtherBonus9})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_DeceiveBase" type="radio" value="ceil(@{Fellowship}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_DeceiveBase" type="radio" value="@{Fellowship}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_DeceiveBase" type="radio" value="@{Fellowship}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_DeceiveBase" type="radio" value="@{Fellowship}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_DeceiveTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_DeceiveOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Deceive" type="number" value="@{DeceiveBase}+@{DeceiveTalentBonus}+@{DeceiveOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -653,12 +678,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">Fel</div>
                                 </td>
-                                <td><input name="attr_Disguise1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Disguise2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Disguise3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus10" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus10" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Disguise" type="number" value="(floor((0.5+@{Disguise1})*@{Fellowship})+@{Disguise2}+@{Disguise3}+@{TalentBonus10}+@{OtherBonus10})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_DisguiseBase" type="radio" value="ceil(@{Fellowship}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_DisguiseBase" type="radio" value="@{Fellowship}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_DisguiseBase" type="radio" value="@{Fellowship}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_DisguiseBase" type="radio" value="@{Fellowship}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_DisguiseTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_DisguiseOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Disguise" type="number" value="@{DisguiseBase}+@{DisguiseTalentBonus}+@{DisguiseOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -668,12 +696,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">Ag</div>
                                 </td>
-                                <td><input name="attr_Dodge1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Dodge2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Dodge3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus11" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus11" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Dodge" type="number" value="(floor((0.5+@{Dodge1})*@{Agility})+@{Dodge2}+@{Dodge3}+@{TalentBonus11}+@{OtherBonus11})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_DodgeBase" type="radio" value="ceil(@{Agility}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_DodgeBase" type="radio" value="@{Agility}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_DodgeBase" type="radio" value="@{Agility}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_DodgeBase" type="radio" value="@{Agility}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_DodgeTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_DodgeOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Dodge" type="number" value="@{DodgeBase}+@{DodgeTalentBonus}+@{DodgeOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -683,12 +714,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">Int</div>
                                 </td>
-                                <td><input name="attr_Evaluate1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Evaluate2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Evaluate3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus12" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus12" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Evaluate" type="number" value="(floor((0.5+@{Evaluate1})*@{Intelligence})+@{Evaluate2}+@{Evaluate3}+@{TalentBonus12}+@{OtherBonus12})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_EvaluateBase" type="radio" value="ceil(@{Intelligence}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_EvaluateBase" type="radio" value="@{Intelligence}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_EvaluateBase" type="radio" value="@{Intelligence}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_EvaluateBase" type="radio" value="@{Intelligence}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_EvaluateTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_EvaluateOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Evaluate" type="number" value="@{EvaluateBase}+@{EvaluateTalentBonus}+@{EvaluateOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -698,12 +732,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">Int</div>
                                 </td>
-                                <td><input name="attr_Gamble1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Gamble2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Gamble3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus13" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus13" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Gamble" type="number" value="(floor((0.5+@{Gamble1})*@{Intelligence})+@{Gamble2}+@{Gamble3}+@{TalentBonus13}+@{OtherBonus13})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_GambleBase" type="radio" value="ceil(@{Intelligence}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_GambleBase" type="radio" value="@{Intelligence}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_GambleBase" type="radio" value="@{Intelligence}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_GambleBase" type="radio" value="@{Intelligence}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_GambleTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_GambleOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Gamble" type="number" value="@{GambleBase}+@{GambleTalentBonus}+@{GambleOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -713,12 +750,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">Fel</div>
                                 </td>
-                                <td><input name="attr_Inquiry1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Inquiry2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Inquiry3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus14" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus14" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Inquiry" type="number" value="(floor((0.5+@{Inquiry1})*@{Fellowship})+@{Inquiry2}+@{Inquiry3}+@{TalentBonus14}+@{OtherBonus14})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_InquiryBase" type="radio" value="ceil(@{Fellowship}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_InquiryBase" type="radio" value="@{Fellowship}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_InquiryBase" type="radio" value="@{Fellowship}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_InquiryBase" type="radio" value="@{Fellowship}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_InquiryTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_InquiryOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Inquiry" type="number" value="@{InquiryBase}+@{InquiryTalentBonus}+@{InquiryOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -728,12 +768,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">S</div>
                                 </td>
-                                <td><input name="attr_Intimidate1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Intimidate2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Intimidate3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus15" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus15" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Intimidate" type="number" value="(floor((0.5+@{Intimidate1})*@{Strength})+@{Intimidate2}+@{Intimidate3}+@{TalentBonus15}+@{OtherBonus15})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_IntimidateBase" type="radio" value="ceil(@{Strength}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_IntimidateBase" type="radio" value="@{Strength}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_IntimidateBase" type="radio" value="@{Strength}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_IntimidateBase" type="radio" value="@{Strength}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_IntimidateTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_IntimidateOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Intimidate" type="number" value="@{IntimidateBase}+@{IntimidateTalentBonus}+@{IntimidateOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -743,12 +786,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">Int</div>
                                 </td>
-                                <td><input name="attr_Logic1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Logic2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Logic3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus16" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus16" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Logic" type="number" value="(floor((0.5+@{Logic1})*@{Intelligence})+@{Logic2}+@{Logic3}+@{TalentBonus16}+@{OtherBonus16})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_LogicBase" type="radio" value="ceil(@{Intelligence}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_LogicBase" type="radio" value="@{Intelligence}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_LogicBase" type="radio" value="@{Intelligence}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_LogicBase" type="radio" value="@{Intelligence}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_LogicTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_LogicOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Logic" type="number" value="@{LogicBase}+@{LogicTalentBonus}+@{LogicOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -758,12 +804,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">Per</div>
                                 </td>
-                                <td><input name="attr_Scrutiny1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Scrutiny2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Scrutiny3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus17" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus17" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Scrutiny" type="number" value="(floor((0.5+@{Scrutiny1})*@{Perception})+@{Scrutiny2}+@{Scrutiny3}+@{TalentBonus17}+@{OtherBonus17})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_ScrutinyBase" type="radio" value="ceil(@{Perception}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_ScrutinyBase" type="radio" value="@{Perception}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_ScrutinyBase" type="radio" value="@{Perception}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_ScrutinyBase" type="radio" value="@{Perception}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_ScrutinyTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_ScrutinyOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Scrutiny" type="number" value="@{ScrutinyBase}+@{ScrutinyTalentBonus}+@{ScrutinyOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -773,12 +822,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">Per</div>
                                 </td>
-                                <td><input name="attr_Search1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_Search2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_Search3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus18" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus18" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Search" type="number" value="(floor((0.5+@{Search1})*@{Perception})+@{Search2}+@{Search3}+@{TalentBonus18}+@{OtherBonus18})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_SearchBase" type="radio" value="ceil(@{Perception}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_SearchBase" type="radio" value="@{Perception}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_SearchBase" type="radio" value="@{Perception}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_SearchBase" type="radio" value="@{Perception}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_SearchTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_SearchOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Search" type="number" value="@{SearchBase}+@{SearchTalentBonus}+@{SearchOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -788,12 +840,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">Ag</div>
                                 </td>
-                                <td><input name="attr_SilentMove1" type="checkbox" value="0.5"></input><span/></td>
-                                <td><input name="attr_SilentMove2" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_SilentMove3" type="checkbox" value="10"></input><span/></td>
-                                <td><input name="attr_TalentBonus19" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus19" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_SilentMove" type="number" value="(floor((0.5+@{SilentMove1})*@{Agility})+@{SilentMove2}+@{SilentMove3}+@{TalentBonus19}+@{OtherBonus19})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_SilentMoveBase" type="radio" value="ceil(@{Agility}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_SilentMoveBase" type="radio" value="@{Agility}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_SilentMoveBase" type="radio" value="@{Agility}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_SilentMoveBase" type="radio" value="@{Agility}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_SilentMoveTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_SilentMoveOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_SilentMove" type="number" value="@{SilentMoveBase}+@{SilentMoveTalentBonus}+@{SilentMoveOtherBonus}"></input></td>
                             </tr>
                             <tr>
                                 <td>
@@ -803,12 +858,15 @@
                                     </button>
                                 <div class="item" style="width:20%;">S</div>
                                 </td>
-                                <td><input name="attr_Swim1" type="checkbox" value="0.5"><span/></td>
-                                <td><input name="attr_Swim2" type="checkbox" value="10"><span/></td>
-                                <td><input name="attr_Swim3" type="checkbox" value="10"><span/></td>
-                                <td><input name="attr_TalentBonus20" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input name="attr_OtherBonus20" type="number" value="0" style="text-align:center"></input></td>
-                                <td><input style="text-align:center" disabled name="attr_Swim" type="number" value="(floor((0.5+@{Swim1})*@{Agility})+@{Swim2}+@{Swim3}+@{TalentBonus20}+@{OtherBonus20})"></input></td>
+                                <td class="dots" colspan="3" >
+									<input name="attr_SwimBase" type="radio" value="ceil(@{Strength}/2)" checked title="Basic"/><span title="Basic"></span>
+									<input name="attr_SwimBase" type="radio" value="@{Strength}" title="Trained"/><span title="Trained"></span>
+									<input name="attr_SwimBase" type="radio" value="@{Strength}+10" title="+10"/><span title="+10"></span>
+									<input name="attr_SwimBase" type="radio" value="@{Strength}+20" title="+20"/><span title="+20"></span>
+								</td>
+                                <td><input name="attr_SwimTalentBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input name="attr_SwimOtherBonus" type="number" value="0" style="text-align:center"></input></td>
+                                <td><input style="text-align:center" disabled name="attr_Swim" type="number" value="@{SwimBase}+@{SwimTalentBonus}+@{SwimOtherBonus}"></input></td>
                             </tr>
                         </table>
 					</div>
@@ -889,7 +947,7 @@
                         <table style="table-layout:fixed;width:100%;">
                             <tr>
                                 <th style="width:44%;"></th>
-                                <th style="height: 10px;width:32%" colspan="4"><label style="text-align: center; font-size: 9px">Skill Rank</label></th>
+                                <th style="height: 10px;width:32%" colspan="4"><label style="text-align: center; font-size: 10px">Skill Rank</label></th>
                                 <th style="height: 10px;width:8%;"><label style="text-align: center; font-size: 10px">Talent</label></th>
                                 <th style="height: 10px;width:8%;"><label style="text-align: center; font-size: 10px">Mod</label></th>
                                 <th style="height: 10px;width:8%;"><label style="text-align: center; font-size: 10px">Total</label></th>
