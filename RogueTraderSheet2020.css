@@ -478,7 +478,7 @@ box-shadow: 0;
 }
 
 .charsheet .sheet-wrapper .sheet-dots input[type="radio"] {
-opacity: 1;
+opacity: 0;
 width: 12px;
 height: 12px;
 position: relative;
@@ -515,7 +515,7 @@ color: rgba(0, 0, 0, 0);
 }
 
 .charsheet .sheet-wrapper .sheet-skills .sheet-dots input[type="radio"] {
-opacity: 1;
+opacity: 0;
 width: 12px;
 height: 12px;
 position: relative;
@@ -532,7 +532,7 @@ margin-left: -6%;
 margin-top: -10%;
 /* border: solid 1px #a8a8a8; */
 line-height: 7px;
-text-align: right;
+text-align: center;
 display: inline-block;
 vertical-align: middle;
 /* box-shadow: 0 0 2px #ccc; */
@@ -548,7 +548,7 @@ z-index: 1;
 }
 
 .charsheet .sheet-wrapper .sheet-skills .repeating_skillgroups .sheet-dots input[type="radio"] {
-opacity: 1;
+opacity: 0;
 width: 12px;
 height: 12px;
 position: relative;
