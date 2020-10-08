@@ -143,31 +143,19 @@
 			<td colspan="5">
                 <button name="roll_WS" class="characteristic-roll" type="roll" style="height:60px;width:100%;"
                 value="&{template:custom} {{name=**@{character_name} tests Weapon Skill**}} {{result=[[(@{WeaponSkill}+?{Modifier|0}-1d100cf100cs1)/10]] }}">
-                    <input disabled name="attr_WeaponSkill" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingWS}+@{AdvancedWS1}+@{AdvancedWS2}+@{AdvancedWS3}+@{AdvancedWS4})]]"/>
+                    <input disabled name="attr_WeaponSkill" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingWS}+[[@{AdvancedWS}*5]])]]"/>
 				</button>
                 <input name="attr_WSB" title="Weapon Skill Bonus" class="unnatural" type="number" disabled value="[[floor(@{WeaponSkill}/10)*@{UnnaturalWS}]]"/>
 			</td>
 		</tr>
-		<tr> <!-- Weapon Skill Advances -->
-			<td style="width:20%;">
-				<div class="item">
-					<label style="font-size:8px;text-align:center;" >
-						Adv.
-					</label>
-					<input name="attr_UnnaturalWS" type="hidden" value="1" title="Unnatural WS" style="font-size:8px"/>
-				</div>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedWS1" type="checkbox" value="5" title="Simple"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedWS2" type="checkbox" value="5" title="Intermediate"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedWS3" type="checkbox" value="5" title="Trained"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedWS4" type="checkbox" value="5" title="Expert"/>
+		<tr class="dots"> <!-- Weapon Skill Advances -->
+			<td colspan="5" style="width:100%;">
+				<input name="attr_UnnaturalWS" type="hidden" value="1" title="Unnatural WS" style="font-size:8px"/>
+				<input name="attr_AdvancedWS" type="radio" value="0" title="Basic" checked /><span title="Basic"></span>
+				<input name="attr_AdvancedWS" type="radio" value="1" title="Simple"/><span title="Simple"></span>
+				<input name="attr_AdvancedWS" type="radio" value="2" title="Intermediate"/><span title="Intermediate"></span>
+				<input name="attr_AdvancedWS" type="radio" value="3" title="Trained"/><span title="Trained"></span>
+				<input name="attr_AdvancedWS" type="radio" value="4" title="Expert"/><span title="Expert"></span>
 			</td>
 		</tr>
 	</table>
@@ -196,31 +184,19 @@
 			<td colspan="5">
                 <button name="roll_BS" class="characteristic-roll" type="roll" style="height:60px;width:100%;"
                 value="&{template:custom} {{name=**@{character_name} tests Ballistic Skill**}} {{result=[[(@{BallisticSkill}+?{Modifier|0}-1d100cf100cs1)/10]] }}">
-                    <input disabled name="attr_BallisticSkill" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingBS}+@{AdvancedBS1}+@{AdvancedBS2}+@{AdvancedBS3}+@{AdvancedBS4})]]"/>
+                    <input disabled name="attr_BallisticSkill" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingBS}+[[@{AdvancedBS}*5]])]]"/>
 				</button>
                 <input name="attr_BSB" title="Ballistic Skill Bonus" class="unnatural" type="number" disabled value="[[floor(@{BallisticSkill}/10)*@{UnnaturalBS}]]"/>
 			</td>
 		</tr>
-		<tr> <!-- Ballistic Skill Advances -->
-			<td style="width:20%;">
-				<div class="item">
-					<label style="font-size:8px;text-align:center;" >
-						Adv.
-					</label>
-					<input name="attr_UnnaturalBS" type="hidden" value="1" title="Unnatural BS" style="font-size:8px"/>
-				</div>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedBS1" type="checkbox" value="5" title="Simple"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedBS2" type="checkbox" value="5" title="Intermediate"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedBS3" type="checkbox" value="5" title="Trained"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedBS4" type="checkbox" value="5" title="Expert"/>
+		<tr class="dots"> <!-- Ballistic Skill Advances -->
+			<td colspan="5" style="width:100%;">
+				<input name="attr_UnnaturalBS" type="hidden" value="1" title="Unnatural BS" style="font-size:8px"/>
+				<input name="attr_AdvancedBS" type="radio" value="0" title="Basic" checked /><span title="Basic"></span>
+				<input name="attr_AdvancedBS" type="radio" value="1" title="Simple"/><span title="Simple"></span>
+				<input name="attr_AdvancedBS" type="radio" value="2" title="Intermediate"/><span title="Intermediate"></span>
+				<input name="attr_AdvancedBS" type="radio" value="3" title="Trained"/><span title="Trained"></span>
+				<input name="attr_AdvancedBS" type="radio" value="4" title="Expert"/><span title="Expert"></span>
 			</td>
 		</tr>
 	</table>
@@ -249,31 +225,19 @@
 			<td colspan="5">
                 <button name="roll_S" class="characteristic-roll" type="roll" style="height:60px;width:100%;"
                 value="&{template:custom} {{name=**@{character_name} tests Strength**}} {{result=[[(@{Strength}+?{Modifier|0}-1d100cf100cs1)/10]] }}">
-                    <input disabled name="attr_Strength" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingS}+@{AdvancedS1}+@{AdvancedS2}+@{AdvancedS3}+@{AdvancedS4})]]"/>
+                    <input disabled name="attr_Strength" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingS}+[[@{AdvancedS}*5]])]]"/>
 				</button>
                 <input name="attr_SB" title="Strength Bonus" class="unnatural" type="number" disabled value="[[floor(@{Strength}/10)*@{UnnaturalS}]]"/>
 			</td>
 		</tr>
-		<tr> <!-- Strength Advances -->
-			<td style="width:20%;">
-				<div class="item">
-					<label style="font-size:8px;text-align:center;" >
-						Adv.
-					</label>
-					<input name="attr_UnnaturalS" type="hidden" value="1" title="Unnatural S" style="font-size:8px"/>
-				</div>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedS1" type="checkbox" value="5" title="Simple"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedS2" type="checkbox" value="5" title="Intermediate"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedS3" type="checkbox" value="5" title="Trained"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedS4" type="checkbox" value="5" title="Expert"/>
+		<tr class="dots"> <!-- Strength Advances -->
+			<td colspan="5" style="width:100%;">
+				<input name="attr_UnnaturalS" type="hidden" value="1" title="Unnatural S" style="font-size:8px"/>
+				<input name="attr_AdvancedS" type="radio" value="0" title="Basic" checked /><span title="Basic"></span>
+				<input name="attr_AdvancedS" type="radio" value="1" title="Simple"/><span title="Simple"></span>
+				<input name="attr_AdvancedS" type="radio" value="2" title="Intermediate"/><span title="Intermediate"></span>
+				<input name="attr_AdvancedS" type="radio" value="3" title="Trained"/><span title="Trained"></span>
+				<input name="attr_AdvancedS" type="radio" value="4" title="Expert"/><span title="Expert"></span>
 			</td>
 		</tr>
 	</table>
@@ -302,31 +266,19 @@
 			<td colspan="5">
                 <button name="roll_T" class="characteristic-roll" type="roll" style="height:60px;width:100%;"
                 value="&{template:custom} {{name=**@{character_name} tests Toughness**}} {{result=[[(@{Toughness}+?{Modifier|0}-1d100cf100cs1)/10]] }}">
-                    <input disabled name="attr_Toughness" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingT}+@{AdvancedT1}+@{AdvancedT2}+@{AdvancedT3}+@{AdvancedT4})]]"/>
+                    <input disabled name="attr_Toughness" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingT}+[[@{AdvancedT}*5]])]]"/>
 				</button>
                 <input name="attr_TB" title="Toughness Bonus" class="unnatural" type="number" disabled value="[[floor(@{Toughness}/10)*@{UnnaturalT}]]"/>
 			</td>
 		</tr>
-		<tr> <!-- Toughness Advances -->
-			<td style="width:20%;">
-				<div class="item">
-					<label style="font-size:8px;text-align:center;" >
-						Adv.
-					</label>
-					<input name="attr_UnnaturalT" type="hidden" value="1" title="Unnatural T" style="font-size:8px"/>
-				</div>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedT1" type="checkbox" value="5" title="Simple"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedT2" type="checkbox" value="5" title="Intermediate"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedT3" type="checkbox" value="5" title="Trained"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedT4" type="checkbox" value="5" title="Expert"/>
+		<tr class="dots"> <!-- Toughness Advances -->
+			<td colspan="5" style="width:100%;">
+				<input name="attr_UnnaturalT" type="hidden" value="1" title="Unnatural T" style="font-size:8px"/>
+				<input name="attr_AdvancedT" type="radio" value="0" title="Basic" checked /><span title="Basic"></span>
+				<input name="attr_AdvancedT" type="radio" value="1" title="Simple"/><span title="Simple"></span>
+				<input name="attr_AdvancedT" type="radio" value="2" title="Intermediate"/><span title="Intermediate"></span>
+				<input name="attr_AdvancedT" type="radio" value="3" title="Trained"/><span title="Trained"></span>
+				<input name="attr_AdvancedT" type="radio" value="4" title="Expert"/><span title="Expert"></span>
 			</td>
 		</tr>
 	</table>
@@ -355,31 +307,19 @@
 			<td colspan="5">
                 <button name="roll_Ag" class="characteristic-roll" type="roll" style="height:60px;width:100%;"
                 value="&{template:custom} {{name=**@{character_name} tests Agility**}} {{result=[[(@{Agility}+?{Modifier|0}-1d100cf100cs1)/10]] }}">
-                    <input disabled name="attr_Agility" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingAg}+@{AdvancedAg1}+@{AdvancedAg2}+@{AdvancedAg3}+@{AdvancedAg4})]]"/>
+                    <input disabled name="attr_Agility" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingAg}+[[@{AdvancedAg}*5]])]]"/>
 				</button>
                 <input name="attr_AgB" title="Agility Bonus" class="unnatural" type="number" disabled value="[[floor(@{Agility}/10)*@{UnnaturalAg}]]"/>
 			</td>
 		</tr>
-		<tr> <!-- Agility Advances -->
-			<td style="width:20%;">
-				<div class="item">
-					<label style="font-size:8px;text-align:center;" >
-						Adv.
-					</label>
-					<input name="attr_UnnaturalAg" type="hidden" value="1" title="Unnatural Ag" style="font-size:8px"/>
-				</div>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedAg1" type="checkbox" value="5" title="Simple"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedAg2" type="checkbox" value="5" title="Agermediate"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedAg3" type="checkbox" value="5" title="Trained"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedAg4" type="checkbox" value="5" title="Expert"/>
+		<tr class="dots"> <!-- Agility Advances -->
+			<td colspan="5" style="width:100%;">
+				<input name="attr_UnnaturalAg" type="hidden" value="1" title="Unnatural Ag" style="font-size:8px"/>
+				<input name="attr_AdvancedAg" type="radio" value="0" title="Basic" checked /><span title="Basic"></span>
+				<input name="attr_AdvancedAg" type="radio" value="1" title="Simple"/><span title="Simple"></span>
+				<input name="attr_AdvancedAg" type="radio" value="2" title="Intermediate"/><span title="Intermediate"></span>
+				<input name="attr_AdvancedAg" type="radio" value="3" title="Trained"/><span title="Trained"></span>
+				<input name="attr_AdvancedAg" type="radio" value="4" title="Expert"/><span title="Expert"></span>
 			</td>
 		</tr>
 	</table>
@@ -408,31 +348,19 @@
 			<td colspan="5">
                 <button name="roll_Int" class="characteristic-roll" type="roll" style="height:60px;width:100%;"
                 value="&{template:custom} {{name=**@{character_name} tests Intelligence**}} {{result=[[(@{Intelligence}+?{Modifier|0}-1d100cf100cs1)/10]] }}">
-                    <input disabled name="attr_Intelligence" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingInt}+@{AdvancedInt1}+@{AdvancedInt2}+@{AdvancedInt3}+@{AdvancedInt4})]]"/>
+                    <input disabled name="attr_Intelligence" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingInt}+[[@{AdvancedInt}*5]])]]"/>
 				</button>
                 <input name="attr_IntB" title="Intelligence Bonus" class="unnatural" type="number" disabled value="[[floor(@{Intelligence}/10)*@{UnnaturalInt}]]"/>
 			</td>
 		</tr>
-		<tr> <!-- Intelligence Advances -->
-			<td style="width:20%;">
-				<div class="item">
-					<label style="font-size:8px;text-align:center;" >
-						Adv.
-					</label>
-					<input name="attr_UnnaturalInt" type="hidden" value="1" title="Unnatural Int" style="font-size:8px"/>
-				</div>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedInt1" type="checkbox" value="5" title="Simple"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedInt2" type="checkbox" value="5" title="Intermediate"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedInt3" type="checkbox" value="5" title="Trained"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedInt4" type="checkbox" value="5" title="Expert"/>
+		<tr class="dots"> <!-- Intelligence Advances -->
+			<td colspan="5" style="width:100%;">
+				<input name="attr_UnnaturalInt" type="hidden" value="1" title="Unnatural Int" style="font-size:8px"/>
+				<input name="attr_AdvancedInt" type="radio" value="0" title="Basic" checked /><span title="Basic"></span>
+				<input name="attr_AdvancedInt" type="radio" value="1" title="Simple"/><span title="Simple"></span>
+				<input name="attr_AdvancedInt" type="radio" value="2" title="Intermediate"/><span title="Intermediate"></span>
+				<input name="attr_AdvancedInt" type="radio" value="3" title="Trained"/><span title="Trained"></span>
+				<input name="attr_AdvancedInt" type="radio" value="4" title="Expert"/><span title="Expert"></span>
 			</td>
 		</tr>
 	</table>
@@ -461,31 +389,19 @@
 			<td colspan="5">
                 <button name="roll_Per" class="characteristic-roll" type="roll" style="height:60px;width:100%;"
                 value="&{template:custom} {{name=**@{character_name} tests Perception**}} {{result=[[(@{Perception}+?{Modifier|0}-1d100cf100cs1)/10]] }}">
-                    <input disabled name="attr_Perception" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingPer}+@{AdvancedPer1}+@{AdvancedPer2}+@{AdvancedPer3}+@{AdvancedPer4})]]"/>
+                    <input disabled name="attr_Perception" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingPer}+[[@{AdvancedPer}*5]])]]"/>
 				</button>
                 <input name="attr_PerB" title="Perception Bonus" class="unnatural" type="number" disabled value="[[floor(@{Perception}/10)*@{UnnaturalPer}]]"/>
 			</td>
 		</tr>
-		<tr> <!-- Perception Advances -->
-			<td style="width:20%;">
-				<div class="item">
-					<label style="font-size:8px;text-align:center;" >
-						Adv.
-					</label>
-					<input name="attr_UnnaturalPer" type="hidden" value="1" title="Unnatural Per" style="font-size:8px"/>
-				</div>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedPer1" type="checkbox" value="5" title="Simple"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedPer2" type="checkbox" value="5" title="Perermediate"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedPer3" type="checkbox" value="5" title="Trained"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedPer4" type="checkbox" value="5" title="Expert"/>
+		<tr class="dots"> <!-- Perception Advances -->
+			<td colspan="5" style="width:100%;">
+				<input name="attr_UnnaturalPer" type="hidden" value="1" title="Unnatural Per" style="font-size:8px"/>
+				<input name="attr_AdvancedPer" type="radio" value="0" title="Basic" checked /><span title="Basic"></span>
+				<input name="attr_AdvancedPer" type="radio" value="1" title="Simple"/><span title="Simple"></span>
+				<input name="attr_AdvancedPer" type="radio" value="2" title="Intermediate"/><span title="Intermediate"></span>
+				<input name="attr_AdvancedPer" type="radio" value="3" title="Trained"/><span title="Trained"></span>
+				<input name="attr_AdvancedPer" type="radio" value="4" title="Expert"/><span title="Expert"></span>
 			</td>
 		</tr>
 	</table>
@@ -514,31 +430,19 @@
 			<td colspan="5">
                 <button name="roll_WP" class="characteristic-roll" type="roll" style="height:60px;width:100%;"
                 value="&{template:custom} {{name=**@{character_name} tests Willpower**}} {{result=[[(@{Willpower}+?{Modifier|0}-1d100cf100cs1)/10]] }}">
-                    <input disabled name="attr_Willpower" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingWP}+@{AdvancedWP1}+@{AdvancedWP2}+@{AdvancedWP3}+@{AdvancedWP4})]]"/>
+                    <input disabled name="attr_Willpower" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingWP}+[[@{AdvancedWP}*5]])]]"/>
 				</button>
                 <input name="attr_WPB" title="Willpower Bonus" class="unnatural" type="number" disabled value="[[floor(@{Willpower}/10)*@{UnnaturalWP}]]"/>
 			</td>
 		</tr>
-		<tr> <!-- Willpower Advances -->
-			<td style="width:20%;">
-				<div class="item">
-					<label style="font-size:8px;text-align:center;" >
-						Adv.
-					</label>
-					<input name="attr_UnnaturalWP" type="hidden" value="1" title="Unnatural WP" style="font-size:8px"/>
-				</div>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedWP1" type="checkbox" value="5" title="Simple"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedWP2" type="checkbox" value="5" title="WPermediate"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedWP3" type="checkbox" value="5" title="Trained"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedWP4" type="checkbox" value="5" title="Expert"/>
+		<tr class="dots"> <!-- Weapon Skill Advances -->
+			<td colspan="5" style="width:100%;">
+				<input name="attr_UnnaturalWP" type="hidden" value="1" title="Unnatural WP" style="font-size:8px"/>
+				<input name="attr_AdvancedWP" type="radio" value="0" title="Basic" checked /><span title="Basic"></span>
+				<input name="attr_AdvancedWP" type="radio" value="1" title="Simple"/><span title="Simple"></span>
+				<input name="attr_AdvancedWP" type="radio" value="2" title="Intermediate"/><span title="Intermediate"></span>
+				<input name="attr_AdvancedWP" type="radio" value="3" title="Trained"/><span title="Trained"></span>
+				<input name="attr_AdvancedWP" type="radio" value="4" title="Expert"/><span title="Expert"></span>
 			</td>
 		</tr>
 	</table>
@@ -567,31 +471,19 @@
 			<td colspan="5">
                 <button name="roll_Fel" class="characteristic-roll" type="roll" style="height:60px;width:100%;"
                 value="&{template:custom} {{name=**@{character_name} tests Fellowship**}} {{result=[[(@{Fellowship}+?{Modifier|0}-1d100cf100cs1)/10]] }}">
-                    <input disabled name="attr_Fellowship" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingFel}+@{AdvancedFel1}+@{AdvancedFel2}+@{AdvancedFel3}+@{AdvancedFel4})]]"/>
+                    <input disabled name="attr_Fellowship" type="number" style="font-size:38px;height:55px;width:100%;" value="[[(@{StartingFel}+[[@{AdvancedFel}*5]])]]"/>
 				</button>
                 <input name="attr_FelB" title="Fellowship Bonus" class="unnatural" type="number" disabled value="[[floor(@{Fellowship}/10)*@{UnnaturalFel}]]"/>
 			</td>
 		</tr>
-		<tr> <!-- Fellowship Advances -->
-			<td style="width:20%;">
-				<div class="item">
-					<label style="font-size:8px;text-align:center;" >
-						Adv.
-					</label>
-					<input name="attr_UnnaturalFel" type="hidden" value="1" title="Unnatural Fel" style="font-size:8px"/>
-				</div>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedFel1" type="checkbox" value="5" title="Simple"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedFel2" type="checkbox" value="5" title="Felermediate"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedFel3" type="checkbox" value="5" title="Trained"/>
-			</td>
-			<td style="width:20%;">
-				<input name="attr_AdvancedFel4" type="checkbox" value="5" title="Expert"/>
+		<tr class="dots"> <!-- Weapon Skill Advances -->
+			<td colspan="5" style="width:100%;">
+				<input name="attr_UnnaturalFel" type="hidden" value="1" title="Unnatural Fel" style="font-size:8px"/>
+				<input name="attr_AdvancedFel" type="radio" value="0" title="Basic" checked /><span title="Basic"></span>
+				<input name="attr_AdvancedFel" type="radio" value="1" title="Simple"/><span title="Simple"></span>
+				<input name="attr_AdvancedFel" type="radio" value="2" title="Intermediate"/><span title="Intermediate"></span>
+				<input name="attr_AdvancedFel" type="radio" value="3" title="Trained"/><span title="Trained"></span>
+				<input name="attr_AdvancedFel" type="radio" value="4" title="Expert"/><span title="Expert"></span>
 			</td>
 		</tr>
 	</table>
@@ -1285,16 +1177,13 @@
                 <div class="quickborder">
                     <div class="skills">
                         <fieldset class="repeating_skillgroups">
-                            <table style="width:100%">
+                            <table style="width:100%;table-layout:fixed;">
                                 <tr>
-                                    <th><input name="attr_skillgroupname" type="text" style="font-weight:bold" placeholder="Skill Group"></input></th>
-                                    <td style="height:10px;width:28px"><label style="text-align: center; font-size: 9px">Basic</label></td>
-                                    <td style="height:10px;width:28px"><label style="text-align: center; font-size: 7.5px">Trained</label></td>
-                                    <td style="height:10px;width:28px"><label style="text-align: center; font-size: 9px">+10</label></td>
-                                    <td style="height:10px;width:28px"><label style="text-align: center; font-size: 9px">+20</label></td>
-                                    <td style="height:10px;width:28px"><label style="text-align: center; font-size: 9px">Talent</label></td>
-                                    <td style="height:10px;width:28px"><label style="text-align: center; font-size: 9px">Mod</label></td>
-                                    <td style="height:10px;width:28px"><label style="text-align: center; font-size: 9px">Total</label></td>
+                                    <th style="height:10px;width:54.5%;"><input name="attr_skillgroupname" type="text" style="font-weight:bold;width:100%;" placeholder="Skill Group"></input></th>
+                                    <th style="height:10px;width:26%" colspan="4"><label style="text-align: center; font-size: 9px">Skill Rank</label></th>
+                                    <th style="height:10px;width:6.5%"><label style="text-align: center; font-size: 9px">Talent</label></th>
+                                    <th style="height:10px;width:6.5%"><label style="text-align: center; font-size: 9px">Mod</label></th>
+                                    <th style="height:10px;width:6.5%"><label style="text-align: center; font-size: 9px">Total</label></th>
                                 </tr>
                                 <tr>
                                     <td>
@@ -1313,13 +1202,16 @@
                                      value="&{template:custom}{{name=**@{character_name} tests @{skillgroupname} (@{skillgroupskillname})**}}{{result=[[(@{skillgroup}+?{Modifier|0}-1d100cs1cf100)/10]] }}"><label style="font-family: 'dicefontd10';font-size:22px;vertical-align:top;" title="Make a Skill Test">0
 											</label></button></div>
                                     </td>
-                                    <td><input style="width:28px" name="attr_skillgroup1" type="checkbox" value="0.5"></input><span/></td>
-                                    <td><input style="width:28px" name="attr_skillgroup2" type="checkbox" value="0.5"></input><span/></td>
-                                    <td><input style="width:28px" name="attr_skillgroup3" type="checkbox" value="10"></input><span/></td>
-                                    <td><input style="width:28px" name="attr_skillgroup4" type="checkbox" value="10"></input><span/></td>
-                                    <td><input style="text-align:center;width:28px;" name="attr_skillgroupTalentBonus" type="number" value="0"></input></td>
-                                    <td><input style="text-align:center;width:28px;" name="attr_skillgroupOtherBonus" type="number" value="0"></input></td>
-                                    <td><input name="attr_skillgroup" style="text-align:center;width:28px;" disabled value="[[floor((@{skillgroup1}+@{skillgroup2})*@{skillgroupcharacteristic})+@{skillgroup3}+@{skillgroup4}+@{skillgroupTalentBonus}+@{skillgroupOtherBonus}]]"/></td>
+                                    <td class="dots2" colspan="4" >
+									<input name="attr_skillgroupbase" type="radio" value="0" checked title="Untrained"/><span  title="Untrained"></span>
+										<input name="attr_skillgroupbase" type="radio" value="ceil(@{skillgroupcharacteristic}/2)" title="Basic"/><span title="Basic"></span>
+										<input name="attr_skillgroupbase" type="radio" value="@{skillgroupcharacteristic}" title="Trained"/><span title="Trained"></span>
+										<input name="attr_skillgroupbase" type="radio" value="@{skillgroupcharacteristic}+10" title="+10"/><span title="+10"></span>
+										<input name="attr_skillgroupbase" type="radio" value="@{skillgroupcharacteristic}+20" title="+20"/><span title="+20"></span>
+									</td>
+                                    <td><input style="text-align:center;" name="attr_skillgroupTalentBonus" type="number" value="0"></input></td>
+                                    <td><input style="text-align:center;" name="attr_skillgroupOtherBonus" type="number" value="0"></input></td>
+                                    <td><input name="attr_skillgroup" style="text-align:center;width:15%;" disabled value="[[floor((@{skillgroupbase}+@{skillgroupTalentBonus}+@{skillgroupOtherBonus}]]"/></td>
                                 </tr>
                             </table>
                             <div style="height:2px"></div><!--spacing-->
