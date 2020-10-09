@@ -6,7 +6,7 @@ The improved sheet under roguetradermago's original repo had some issues I'm aim
 
 Most of this is likely going to be for my own usage, but I wanted to have an archive of my edits in case of catastrophe.
 
-#Fixes
+# Fixes
 - Skillgroups can be rolled now *(see first entry on to-do)* by adding a button to do the rolling. Janky, but it works. Would rather have a click-number like the original sheet *intended*.
 - Characteristic advances are no longer misaligned
 - Characteristic bonuses are now auto-calculated, with unnatural characteristic support *(but see to-do)*
@@ -17,9 +17,9 @@ Most of this is likely going to be for my own usage, but I wanted to have an arc
 - all ampersands and "ands" in raw text are replaced with the html ampersand code. Cleaner and more consistent.
 - characteristics and skillgroups (rest of skills are next) are now radios with little purity seals in place of the dots! Also display the name of the rank above the radio.
 
-#To-Do
+# To-Do
 - finish skill rank updates to radio inputs with custom dots (currently characteristics / skillgroups have it)
-- Fix weird problem of <input> tags inside <button> tags preventing clicking of said button (characteristic rolls, skillgroup rolls). Button added on side of skillgroups as a quick-fix, and it doesn't look *terrible*, but it is still an undesirable solution. Perhaps <span> tags are a way to go? Initial testing is inconclusive
+- Fix weird problem of ``<input>`` tags inside ``<button>`` tags preventing clicking of said button (characteristic rolls, skillgroup rolls). Button added on side of skillgroups as a quick-fix, and it doesn't look *terrible*, but it is still an undesirable solution. Perhaps ``<span>`` tags are a way to go? Initial testing is inconclusive
 - set up flexboxes for better sheet viewing in nonstandard viewports
 - add a repeatingSum function for ship point calculation
 - convert characteristic advance and skill advance checkboxes into a set of radios that autofills previous dots.
