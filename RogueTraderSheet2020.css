@@ -73,7 +73,7 @@ border-radius: 4px;
 /*----------- End Tab Setup -----------*/
 
 
-/* CSS Reset */{}
+/* CSS Reset */
 .charsheet .sheet-wrapper div, .charsheet .sheet-wrapper span, .charsheet .sheet-wrapper label,
 .charsheet .sheet-wrapper h1, .charsheet .sheet-wrapper h2, .charsheet .sheet-wrapper h3, .charsheet .sheet-wrapper h4, .charsheet .sheet-wrapper h5, .charsheet .sheet-wrapper h6, .charsheet .sheet-wrapper p,
 .charsheet .sheet-wrapper table, .charsheet .sheet-wrapper caption, .charsheet .sheet-wrapper tbody, .charsheet .sheet-wrapper tfoot, .charsheet .sheet-wrapper thead, .charsheet .sheet-wrapper tr, .charsheet .sheet-wrapper th, .charsheet .sheet-wrapper td {
@@ -233,6 +233,7 @@ transition: border linear .2s,box-shadow linear .2s;
 -moz-border-radius: 3px;
 border-radius: 3px;
 -webkit-writing-mode: horizontal-tb;
+writing-mode: horizontal-tb;
 }
 .charsheet .sheet-wrapper input, .charsheet .sheet-wrapper select, .charsheet .sheet-wrapper input[type="number"] {
 display: inline-block;
@@ -272,6 +273,7 @@ transition: border linear .2s,box-shadow linear .2s;
 -moz-border-radius: 3px;
 border-radius: 3px;
 -webkit-writing-mode: horizontal-tb;
+writing-mode: horizontal-tb;
 }
 .charsheet .sheet-wrapper input:not([type='checkbox']) {
 -webkit-appearance: textfield;
@@ -343,27 +345,34 @@ width: calc(100% - 3px) !important;
 margin-right: 0 !important;
 }
 
-.charsheet .sheet-wrapper .sheet-flex {
+.charsheet .sheet-wrapper .sheet-flex,.charsheet .sheet-wrapper .sheet-flex2 {
 width:100%;
 display:flex;
-flex-flow:row nowrap;
+flex-flow:row wrap;
 justify-content:space-between;
+align-content: flex-start;
+flex: 1 1 auto;
 }
 
-.charsheet .sheet-wrapper .sheet-flex table {
+.charsheet .sheet-wrapper .sheet-flex {
+align-items: flex-end;
+}
+
+.charsheet .sheet-wrapper .sheet-flex2 {
+align-items: flex-start;
+}
+
+.charsheet .sheet-wrapper .sheet-flex table,.charsheet .sheet-wrapper .sheet-flex table tr {
 border:none;
 border-collapse:collapse;
-width:11%;
-flex-basis:11%;
+min-width: 72px;
+width: 11%;
+max-width: 88px;
 }
 
-.charsheet .sheet-wrapper .sheet-flex table tr {
-border:none;
-border-collapse:collapse;
-width:11%;
-flex-basis:11%;
+.charsheet .sheet-wrapper .sheet-flex2 table,.charsheet .sheet-wrapper .sheet-flex2 .sheet-col {
+width: 410px;
 }
-
 
 /* Special Styles */
 .charsheet .sheet-wrapper .sheet-skills td:first-child {
@@ -477,86 +486,85 @@ border-radius: 0;
 box-shadow: 0;
 }
 
+/* hide the radio dots */
 .charsheet .sheet-wrapper .sheet-dots input[type="radio"] {
 opacity: 0;
 width: 12px;
 height: 12px;
 position: relative;
-top: -5%;
-left: 10%;
-margin: -5%;
+left: 10px;
+margin: -5px -30px -5px -5px;
 cursor: pointer;
 z-index: 2;
 }
 
+
+/* Fake radio circle */
 .charsheet .sheet-wrapper .sheet-dots input[type="radio"] + span::before {
-margin-right: 4%;
-margin-left: -4%;
-margin-top: -18%;
-/* border: solid 1px #a8a8a8; */
+border: solid 1px #a8a8a8;
+border-radius: 100%;
 text-align: center;
 line-height: 7px;
 display: inline-block;
+position: relative;
 vertical-align: middle;
-/* box-shadow: 0 0 2px #ccc; */
-/* background: #f6f6f6; */
-/* background: radial-gradient(#f6f6f6, #dfdfdf); */
-content: attr(title) url(https://raw.githubusercontent.com/eloquentlizard/rogue-trader-sheet/master/purityseal.png);
-width: 10px;
-height: 10px;
-font-size: 7px;
-background-color: rgba(0, 0, 0, 0);
-z-index: 1;
-/* border-radius: 50%; */
-}
-
-.charsheet .sheet-wrapper .sheet-dots input[type="radio"] + span[title^="Inter"]::before {
-text-indent: -60%;
-}
-
-.charsheet .sheet-wrapper .sheet-dots input[type="radio"]:not(:checked) + span::before {
-color: rgba(0, 0, 0, 0);
-}
-
-.charsheet .sheet-wrapper .sheet-skills .sheet-dots input[type="radio"] {
-top: 6%;
-left: 5%;
-}
-
-.charsheet .sheet-wrapper .sheet-skills .sheet-dots input[type="radio"] + span::before {
-margin-right: 11%;
-margin-left: -6%;
-margin-top: -10%;
-content: attr(title) url(https://raw.githubusercontent.com/eloquentlizard/rogue-trader-sheet/master/purityseal-small.png);
+box-shadow: 0 0 2px #ccc;
+background: #00000000;
+background: radial-gradient(#f6f6f688, #dfdfdf88);
+content: "";
 width: 12px;
 height: 12px;
+font-size: 7px;
+z-index: 0;
+left: 26px;
+margin: 0px;
 }
 
-.charsheet .sheet-wrapper .sheet-skills .sheet-dots input[type="radio"] + span[title^="+"]::before {
-text-indent: 15%;
+/* Fake radio dot as image -- prevent weird sizing issues */
+.charsheet .sheet-wrapper .sheet-dots input[type="radio"] + span {
+width: 5px;
+overflow: visible;
 }
 
-.charsheet .sheet-wrapper .sheet-skills .sheet-basicskills .sheet-dots input[type="radio"] + span::before {
-margin-right: 12%;
-margin-left: -8%;
+/* Fake radio actual dot -- an image contained within the html (which is therefore much easier to manipulate and move around */
+.charsheet .sheet-wrapper .sheet-dots input[type="radio"] + span > img {
+position: relative;
+top: 9px;
+left: 10px;
+padding: 0;
+margin: 0;
+z-index: 1;
 }
 
-.charsheet .sheet-wrapper .sheet-skills .repeating_skillgroups .sheet-dots input[type="radio"] {
-top: 5%;
+/* Remove dot from all radios _after_ selected one to create effect of filling all dots left */
+.charsheet .sheet-wrapper .sheet-dots input[type="radio"]:checked ~ input[type="radio"] + span > img {
+visibility: hidden;
 }
 
-.charsheet .sheet-wrapper .sheet-skills .repeating_skillgroups .sheet-dots input[type="radio"] + span::before {
-margin-right: 9%;
-margin-left: -8%;
-margin-top: -17%;
-line-height: 9px;
+/* label above the radio dots */
+.charsheet .sheet-wrapper .sheet-dots input[type="radio"] + span::after {
+content: attr(title);
+line-height: 7px;
 display: inline-block;
+position: relative;
+vertical-align: middle;
+text-align: center;
+font-size: 8px;
+bottom: 11px;
+right: 10px;
+width: 1px;
+overflow: visible;
+visibility: hidden;
+}
+/* make the label show when value is selected */
+.charsheet .sheet-wrapper .sheet-dots input[type="radio"]:checked + span::after {
+visibility: visible;
+}
+/* fix for the "Intermediate" label on character advances */
+.charsheet .sheet-wrapper .sheet-dots input[type="radio"] + span[title^="Inter"]::after {
+text-indent: -10px;
 }
 
-.charsheet .sheet-wrapper .sheet-dots input[type="radio"]:checked ~ input[type="radio"] + span::before {
-color: rgba(0, 0, 0, 0);
-content: /* url(https://raw.githubusercontent.com/eloquentlizard/rogue-trader-sheet/master/blank10x10.png) */ "";
-}
 
 
 
