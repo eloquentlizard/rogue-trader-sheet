@@ -490,8 +490,10 @@
 				</div>
 			</div>
 		</div>
-        <div class="flex2">
-            <div class="col" style="order:0;"> <!--Basic Skills-->
+        <!--Basic skills, advanced skills, fate points and profit factor-->
+        <div class="2colrow">
+            <!--Basic Skills, profit factor, adquisitions and misfortunes-->
+            <div class="col">
                 <h3>Basic Skills</h3>
                 <div class="quickborder">
                     <div class="skills">
@@ -864,13 +866,79 @@
                                 <td><input style="text-align:center" disabled name="attr_Swim" type="number" value="@{SwimBase}+@{SwimTalentBonus}+@{SwimOtherBonus}"></input></td>
                             </tr>
                         </table>
-					</div>
+                    </div>
 				</div>
-			</div>
-			<div class="col" style="order:1;"> <!-- Advanced Skills -->
-			    <h3>Advanced Skills</h3>
-				<div class="quickborder">
-                    <div class="skills">
+				<!--Profit Factor, Acquisitions and Misfortunes -->
+				<div class="row">
+				    <div class="quickborder">
+                        <div class="row" style="height:3px" ></div> <!--Spacing-->
+                        <div class="row">
+                            <button name="roll_acquisition" type="roll" style="width:40%;height:35px" title="Acquisition Test" 
+                            value="&{template:custom} {{name=**@{character_name} makes an Acquisition Test**}} {{result=[[(@{Profitfactor}+?{Availability|Ubiquitous +70 'Ration Pack',70|Abundant +50 'Knife',50|Plentiful +30 'Void Suit',30|Common +20 'Lasgun',20|Average +10 'Micro-bead',10|Scarce +0 'Demolition Charge',0|Rare -10 'Krak Grenade',-10|Very Rare -20 'Heavy Bolter',-20|Extremely Rare -30 'Digital Weapon',-30|Near Unique -50 'Tempest Bolt Shells',-50|Unique -70 'Archeotech Power Armour',-70}+?{Scale|Negligible +30 'Single Man',30|Trivial +20 'Squad(3–5)',20|Minor +10 'Platoon(10–30)',10|Standard +0 'Company(50–100)',0|Major -10 'Regiment(500–1,000)',-10|Significan -20 Division(2,000–5,000)',-20|Vast -30 'Army (10,000+)',-30}+?{Craftmanship|Poor +10 'Corpse Starch Ration Pack',10|Common +0 'Typical Clothing',0|Good -10 'Finely Crafted Forge World Bolter',-10|Best -30 'Exquisite Power Sword with Noble Family Crest',-30}-1d100cs1cf100)/10]] }}">
+                                <label style="text-align: center; font-size: 20px;">Profit Factor</label></button>
+                            <div class="item" style="width:3%"></div>
+                            <div class="item" style="width:16%"><label>Starting:</label></div>
+                            <div class="item brackets" style="width:10%"><input name="attr_startingprofit" type="number" style="text-align: center" value="0"></input></div>
+                            <div class="item" style="width:3%"></div>
+                            <div class="item" style="width:15%"><label>Current:</label></div>
+                            <div class="item brackets" style="width:10%"><input name="attr_profitfactor" type="number" style="text-align: center" value="0"></input></div>
+                            <div class="item" style="width:3%"></div>
+                        </div>
+                        <div class="row" style="height:11px" ></div> <!--Spacing-->
+                    </div>
+                    <!-- Fate points -->
+                    <div class="quickborder">
+                        <div class="row" style="height:3px" ></div> <!--Spacing-->
+                        <div class="row">
+                            <div class="item" style="width:45%"><label style="text-align:center;font-size:25px">Fate Points</label></div>
+                            <div class="item" style="width:12%"><label>Total:</label></div>
+                            <div class="item brackets" style="width:10%"><input name="attr_fate_max" type="number" style="text-align: center" value="0"></input></div>
+                            <div class="item" style="width:5%"></div>
+                            <div class="item" style="width:16%"><label>Current:</label></div>
+                            <div class="item brackets" style="width:10%"><input name="attr_fate" type="number" style="text-align: center" value="0"></input></div>
+                            <div class="item" style="width:2%"></div>
+						</div>
+						<div class="row" style="height:9px" ></div> <!--Spacing-->
+					</div>
+                    <h3>Acquisitions</h3>
+                    <div class="quickborder">
+                        <fieldset class="repeating_acquisitions">
+                            <div class="item" style="width:81%"><input name="attr_acquisitionsname" type="text" placeholder="Acquisition Name"></input></div>
+                            <div class="item" style="width:15%"><button name="roll_acquisitiondesc" type="roll" 
+                            value="&{template:custom} {{name=**@{acquisitionsname}**}} {{desc=@{acquisitiondesc}}}"><label>Show</label> 
+                            </button></div>
+                            <input style="width:4%" type="checkbox" name="attr_hideacquisitiondesc" value="1" class="arrow" title="Hide Description"></input>
+                            <div class="hbody"><textarea style="height:45px" name="attr_acquisitiondesc" placeholder="Acquisition Description"></textarea></div>
+                        </fieldset>
+                    </div>
+                    <h3>Misfortunes</h3>
+                    <div class="quickborder">
+                        <fieldset class="repeating_misfortunes">
+                            <div class="item" style="width:81%"><input name="attr_misfortunename" type="text" placeholder="Misfortune Name"></input></div>
+                            <div class="item" style="width:15%"><button name="roll_misfortunedesc" type="roll" 
+                            value="&{template:custom} {{name=**@{misfortunename}**}} {{desc=@{misfortunedesc}}}"><label>Show</label> 
+                            </button></div>
+                            <input style="width:4%" type="checkbox" name="attr_hidemisfortunedesc" value="1" class="arrow" title="Hide Description"></input>
+                            <div class="hbody"><textarea style="height:45px" name="attr_misfortunedesc" placeholder="Misfortune Description"></textarea></div>
+                        </fieldset>
+                    </div>
+                    <h3>Special Notes</h3>
+                    <div class="quickborder">
+                        <fieldset class="repeating_specialnotes">
+                            <div class="item" style="width:81%"><input name="attr_specialnotesname" type="text" placeholder="Note Name"></input></div>
+                            <div class="item" style="width:15%"><button name="roll_specialnotesdesc" type="roll" 
+                            value="&{template:custom} {{name=**@{specialnotesname}**}} {{desc=@{specialnotesdesc}}}"><label>Show</label> 
+                            </button></div>
+                            <input style="width:4%" type="checkbox" name="attr_hidespecialnotes" value="1" class="arrow" title="Hide Description"></input>
+                            <div class="hbody"><textarea style="height:65px" name="attr_specialnotesdesc" placeholder="Note Description"></textarea></div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                    <h3>Advanced Skills</h3>
+                    <div class="quickborder">
+                        <div class="skills">
                         <table style="table-layout:fixed;">
                             <tr>
                                 <th style="width:44%;"></th>
@@ -1206,9 +1274,7 @@
                         </table>
                     </div>
                 </div>
-            </div>
-            <div class="col" style="order:2;"> <!-- Skill Groups -->
-                <h3>Skill Groups</h3> 
+                <h3>Skill Groups</h3>
                 <div class="quickborder">
                     <div class="skills">
                         <fieldset class="repeating_skillgroups">
@@ -1249,82 +1315,12 @@
                                     <td><input name="attr_skillgroup" style="text-align:center;width:100%;" disabled value="[[@{skillgroupbase}+@{skillgroupTalentBonus}+@{skillgroupOtherBonus}]]"/></td>
                                 </tr>
                             </table>
-                            <div style="height:2px"></div><!--spacing-->
-                        </fieldset>
-                    </div>
-                </div>
-			</div>
-			<div class="col" style="order:4;"> <!-- Profit Factor -->
-				    <h2>Profit Factor</h2>
-				    <div class="quickborder">
-				        <div class="row" style="height:3px"></div> <!--Spacing-->
-                        <div class="row">
-                            <button name="roll_acquisition" type="roll" style="width:40%;height:35px" title="" 
-                            value="&{template:custom} {{name=**@{character_name} makes an Acquisition Test**}} {{result=[[(@{Profitfactor}+?{Availability|Ubiquitous +70 'Ration Pack',70|Abundant +50 'Knife',50|Plentiful +30 'Void Suit',30|Common +20 'Lasgun',20|Average +10 'Micro-bead',10|Scarce +0 'Demolition Charge',0|Rare -10 'Krak Grenade',-10|Very Rare -20 'Heavy Bolter',-20|Extremely Rare -30 'Digital Weapon',-30|Near Unique -50 'Tempest Bolt Shells',-50|Unique -70 'Arch&aelig;otech Power Armour',-70}+?{Scale|Negligible +30 'Single Man',30|Trivial +20 'Squad(3–5)',20|Minor +10 'Platoon(10–30)',10|Standard +0 'Company(50–100)',0|Major -10 'Regiment(500–1,000)',-10|Significant -20 'Division(2,000–5,000)',-20|Vast -30 'Army (10,000+)',-30}+?{Craftmanship|Poor +10 'Corpse Starch Ration Pack',10|Common +0 'Typical Clothing',0|Good -10 'Finely Crafted Forge World Bolter',-10|Best -30 'Exquisite Power Sword with Noble Family Crest',-30}-1d100cs1cf100)/10]] }}">
-                                <label style="font-size:18px;">Acquisition Test</label></button>
-                            <div class="item" style="width:3%"></div>
-                            <div class="item" style="width:16%"><label>Starting:</label></div>
-                            <div class="item brackets" style="width:10%"><input name="attr_startingprofit" type="number" style="text-align: center" value="0"></input></div>
-                            <div class="item" style="width:3%"></div>
-                            <div class="item" style="width:15%"><label>Current:</label></div>
-                            <div class="item brackets" style="width:10%"><input name="attr_profitfactor" type="number" style="text-align: center" value="0"></input></div>
-                            <div class="item" style="width:3%"></div>
-                        </div>
-                        <div class="row" style="height:10px"></div> <!--Spacing-->
-                    </div>
-                    <h3>Acquisitions</h3> 
-                    <div class="quickborder">
-                        <fieldset class="repeating_acquisitions">
-                            <div class="item" style="width:81%"><input name="attr_acquisitionsname" type="text" placeholder="Acquisition Name"></input></div>
-                            <div class="item" style="width:15%"><button name="roll_acquisitiondesc" type="roll" 
-                        value="&{template:custom} {{name=**@{acquisitionsname}**}} {{desc=@{acquisitiondesc}}}"><label>Show</label> 
-                            </button></div>
-                            <input style="width:4%" type="checkbox" name="attr_hideacquisitiondesc" value="1" class="arrow" title="Hide Description"></input>
-                            <div class="hbody"><textarea style="height:45px" name="attr_acquisitiondesc" placeholder="Acquisition Description"></textarea></div>
-                        </fieldset>
-                    </div>
-                    <h3>Misfortunes</h3>
-                    <div class="quickborder">
-                        <fieldset class="repeating_misfortunes">
-                            <div class="item" style="width:81%"><input name="attr_misfortunename" type="text" placeholder="Misfortune Name"></input></div>
-                            <div class="item" style="width:15%"><button name="roll_misfortunedesc" type="roll" 
-                        value="&{template:custom} {{name=**@{misfortunename}**}} {{desc=@{misfortunedesc}}}"><label>Show</label> 
-                            </button></div>
-                            <input style="width:4%" type="checkbox" name="attr_hidemisfortunedesc" value="1" class="arrow" title="Hide Description"></input>
-                            <div class="hbody"><textarea style="height:45px" name="attr_misfortunedesc" placeholder="Misfortune Description"></textarea></div>
-                        </fieldset>
-                    </div>
-			</div>
-            <div class="col" style="order:3;"><!-- Fate Points -->
-                <div class="quickborder" style="padding-bottom:5px;">
-                    <div class="row" style="height:3px" ></div> <!--Spacing-->
-					<div class="row" >
-                        <div class="item" style="width:45%"><label style="text-align:center;font-size:25px">Fate Points</label></div>
-                        <div class="item" style="width:12%"><label>Total:</label></div>
-                        <div class="item brackets" style="width:10%"><input name="attr_fate_max" type="number" style="text-align: center" value="0"></input></div>
-                        <div class="item" style="width:5%"></div>
-                        <div class="item" style="width:16%"><label>Current:</label></div>
-                        <div class="item brackets" style="width:10%"><input name="attr_fate" type="number" style="text-align: center" value="0"></input></div>
-                        <div class="item" style="width:2%"></div>
-					</div>
-				</div>
-			</div>
-			<div class="col" style="order:5;"> <!-- Special Notes -->
-                <h3>Special Notes</h3> 
-                <div class="quickborder">
-                    <fieldset class="repeating_specialnotes">
-                        <div class="item" style="width:81%"><input name="attr_specialnotesname" type="text" placeholder="Note Name"></input></div>
-                        <div class="item" style="width:15%"><button name="roll_specialnotesdesc" type="roll" 
-                        value="&{template:custom} {{name=**@{specialnotesname}**}} {{desc=@{specialnotesdesc}}}"><label>Show</label> 
-                        </button></div>
-                        <input style="width:4%" type="checkbox" name="attr_hidespecialnotes" value="1" class="arrow" title="Hide Description"></input>
-                        <div class="hbody"><textarea style="height:65px" name="attr_specialnotesdesc" placeholder="Note Description"></textarea></div>
-                    </fieldset>
-                </div>
-            </div>
+
 		</div>
-	</div>
-</div>
+	            </div>
+            </div>
+        </div>
+    </div>
 <!-- Combat Tab %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
 <div class="sheet-section-gear">
     <div class="sheet-wrapper">

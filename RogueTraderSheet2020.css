@@ -345,21 +345,13 @@ width: calc(100% - 3px) !important;
 margin-right: 0 !important;
 }
 
-.charsheet .sheet-wrapper .sheet-flex,.charsheet .sheet-wrapper .sheet-flex2 {
-width:100%;
-display:flex;
-flex-flow:row wrap;
-justify-content:space-between;
-align-content: flex-start;
-flex: 1 1 auto;
-}
-
 .charsheet .sheet-wrapper .sheet-flex {
+width:100%;
+display: flex;
+flex-flow:row wrap;
+justify-content: space-evenly;
+align-content: flex-start;
 align-items: flex-end;
-}
-
-.charsheet .sheet-wrapper .sheet-flex2 {
-align-items: flex-start;
 }
 
 .charsheet .sheet-wrapper .sheet-flex table,.charsheet .sheet-wrapper .sheet-flex table tr {
@@ -372,6 +364,10 @@ max-width: 88px;
 
 .charsheet .sheet-wrapper .sheet-flex2 table,.charsheet .sheet-wrapper .sheet-flex2 .sheet-col {
 width: 410px;
+}
+
+.charsheet .sheet-wrapper .sheet-flex2 table,.charsheet .sheet-wrapper .sheet-flex2 .sheet-col .sheet-quickborder {
+width: 99%;
 }
 
 /* Special Styles */
@@ -469,24 +465,8 @@ display: inline-block;
 margin-left: -3px;
 margin-right: -3.5px;
 }
-.charsheet .sheet-wrapper .sheet-item5 { /*used on Characteristic Advancement area*/
-display: inline-block;
-width: 100%;
-height: 12px; 
-vertical-align: middle;
-margin: 0 -1px 0 -1px;
-text-align: center;
-padding: 0;
-overflow: hidden;
-font-weight: regular;
-background: none;
-border: none;
-outline: none;
-border-radius: 0;
-box-shadow: 0;
-}
 
-/* hide the radio dots */
+/* hide the radio dots, but bring them to the front such that they are easily clicked */
 .charsheet .sheet-wrapper .sheet-dots input[type="radio"] {
 opacity: 0;
 width: 12px;
@@ -497,8 +477,6 @@ margin: -5px -30px -5px -5px;
 cursor: pointer;
 z-index: 2;
 }
-
-
 /* Fake radio circle */
 .charsheet .sheet-wrapper .sheet-dots input[type="radio"] + span::before {
 border: solid 1px #a8a8a8;
@@ -519,13 +497,11 @@ z-index: 0;
 left: 26px;
 margin: 0px;
 }
-
 /* Fake radio dot as image -- prevent weird sizing issues */
 .charsheet .sheet-wrapper .sheet-dots input[type="radio"] + span {
 width: 5px;
 overflow: visible;
 }
-
 /* Fake radio actual dot -- an image contained within the html (which is therefore much easier to manipulate and move around */
 .charsheet .sheet-wrapper .sheet-dots input[type="radio"] + span > img {
 position: relative;
@@ -535,12 +511,10 @@ padding: 0;
 margin: 0;
 z-index: 1;
 }
-
 /* Remove dot from all radios _after_ selected one to create effect of filling all dots left */
 .charsheet .sheet-wrapper .sheet-dots input[type="radio"]:checked ~ input[type="radio"] + span > img {
 visibility: hidden;
 }
-
 /* label above the radio dots */
 .charsheet .sheet-wrapper .sheet-dots input[type="radio"] + span::after {
 content: attr(title);
@@ -564,9 +538,31 @@ visibility: visible;
 .charsheet .sheet-wrapper .sheet-dots input[type="radio"] + span[title^="Inter"]::after {
 text-indent: -10px;
 }
-
-
-
+/* tweaking the skill entry radio dots */
+.charsheet .sheet-wrapper .sheet-skills .sheet-dots input[type="radio"] {
+margin-left: -10px;
+margin-right: -18px;
+height: 100%;
+}
+/* tweak skill entry fake radio dots */
+.charsheet .sheet-wrapper .sheet-skills .sheet-dots input[type="radio"] + span::before {
+left: 16px;
+top: 1px;
+width: 10px;
+height: 10px;
+}
+/* shorten purity seal size for skill entry dots such that they don't considerably overlap with the entry below them*/
+.charsheet .sheet-wrapper .sheet-skills .sheet-dots input[type="radio"] + span > img {
+left: 2px;
+width: 16px;
+height: 24px;
+top: 8px;
+}
+/* label tweak for skill entry dots */
+.charsheet .sheet-wrapper  .sheet-skills .sheet-dots input[type="radio"] + span::after {
+bottom: 9px;
+text-indent: -5px;
+}
 
 /*=== Ability Bonus container "unnatural" ===*/
 
